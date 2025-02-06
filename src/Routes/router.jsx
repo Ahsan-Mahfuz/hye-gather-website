@@ -9,6 +9,7 @@ import EventData from '../pages/eventData/EventData'
 import TermsAndCondition from '../pages/termsAndCondition/TermsAndCondition'
 import PrivacyAndPolicy from '../pages/privacyAndPolicy/PrivacyAndPolicy'
 import ContactUs from '../pages/contact/ContactUs'
+import SignUp from '../pages/Auth/SignUp'
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,27 @@ const router = createBrowserRouter([
       </Layout>
     ),
   },
+  {
+    path: '/sign-up',
+    element: <SignUp />,
+  },
+  // {
+  //   path: '/login',
+  //   element: <LoginPage />,
+  // },
+
+  // {
+  //   path: '/forget-password',
+  //   element: <ForgetPassword />,
+  // },
+  // {
+  //   path: '/reset-password',
+  //   element: <ResetPassword />,
+  // },
+  // {
+  //   path: '/set-new-password',
+  //   element: <ChangePassword />,
+  // },
   // {
   //   path: '/job-request',
   //   element: (

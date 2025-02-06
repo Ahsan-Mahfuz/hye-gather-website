@@ -1,87 +1,44 @@
-import React, { useState } from 'react'
-import { Form, Input, Button, Select } from 'antd'
+import React from 'react'
+import { Form, Input, Button } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
-import rightSideImage from '../../assets/loginpagePicture.png'
+import signUp from '../../assets/signUp.png'
 
 const SignUp = () => {
   const navigate = useNavigate()
 
-  const [accountType, setAccountType] = useState('regular')
-
-  const handleAccountTypeChange = (e) => {
-    setAccountType(e.target.value)
-  }
   const onFinish = (values) => {
     console.log('Received values of form: ', values)
     navigate('/login')
   }
 
   return (
-    <div className="fixed inset-0 h-screen flex text-white flex-col lg:flex-row">
+    <div className="fixed inset-0 h-screen flex  flex-col lg:flex-row">
       <div className="w-1/2 hidden lg:block">
-        <img
-          src={rightSideImage}
-          alt="Login"
-          className="w-full h-full object-cover"
-        />
+        <img src={signUp} alt="Login" className="w-full h-full object-cover" />
       </div>
-      <div className="w-full lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12 bg-black">
-        <h1
-          className="font-bold mb-2 whitespace-nowrap"
-          style={{ fontSize: 'clamp(20px, 10vw, 50px)' }}
-        >
-          Create an account
-        </h1>
-        <p
-          className="text-lg mb-8 whitespace-nowrap"
-          style={{ fontSize: 'clamp(12px, 5vw, 20px)' }}
-        >
-          Please Enter your account details.
-        </p>
-
-        <div className="flex lg:flex-row flex-col items-center justify-center mb-4">
-          <div className="flex items-center justify-center mb-4 lg:mb-0">
-            <input
-              type="radio"
-              value="professional"
-              name="accountType"
-              className="mr-2"
-              checked={accountType === 'professional'}
-              onChange={handleAccountTypeChange}
-            />
-
-            <span
-              className="text-white mr-4 whitespace-nowrap"
-              style={{ fontSize: 'clamp(12px, 5vw, 16px)' }}
-            >
-              Sign up as a professional user
-            </span>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="radio"
-              value="regular"
-              name="accountType"
-              className="mr-2"
-              checked={accountType === 'regular'}
-              onChange={handleAccountTypeChange}
-            />
-
-            <span
-              className="text-white whitespace-nowrap"
-              style={{ fontSize: 'clamp(12px, 5vw, 16px)' }}
-            >
-              Sign up as a Regular user
-            </span>
-          </div>
+      <div className="bg-white mx-auto lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12 ">
+        <div className='flex items-center flex-col max-w-[500px] w-full'>
+          <h1
+            className="font-bold mb-2 text-center"
+            style={{ fontSize: 'clamp(20px, 8vw, 40px)' }}
+          >
+            Create an account
+          </h1>
+          <p
+            className="text-xl mb-8  text-center"
+            style={{ fontSize: 'clamp(12px, 5vw, 20px)' }}
+          >
+            Join us today and start planning your events or managing your
+            services seamlessly!
+          </p>
         </div>
 
         <Form
           requiredMark={false}
           layout="vertical"
           onFinish={onFinish}
-          className="w-full max-w-sm overflow-y-scroll  scrollbar-none"
+          className="w-full max-w-md overflow-y-scroll  scrollbar-none"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -89,7 +46,7 @@ const SignUp = () => {
         >
           <Form.Item
             name="username"
-            label={<span className="text-white ">User Name</span>}
+            label={<span className=" ">User Name</span>}
             rules={[
               {
                 required: true,
@@ -100,17 +57,13 @@ const SignUp = () => {
           >
             <Input
               placeholder="Enter username"
-              className="h-[42px] px-4 bg-black border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-              }}
+              className="h-[42px] px-4 w-full  border-gray-300 rounded-md"
             />
           </Form.Item>
 
           <Form.Item
             name="email"
-            label={<span className="text-white ">Email</span>}
+            label={<span className=" ">Email</span>}
             rules={[
               {
                 type: 'email',
@@ -124,40 +77,46 @@ const SignUp = () => {
           >
             <Input
               placeholder="Enter Email"
-              className="h-[42px] px-4 bg-black border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-              }}
+              className="h-[42px] px-4  border-gray-300 rounded-md"
+            />
+          </Form.Item>
+          <Form.Item
+            name="phone"
+            label={<span className="">Phone Number</span>}
+            rules={[
+              {
+                required: true,
+                message: 'Please input your phone number!',
+              },
+              {
+                pattern: /^[0-9]+$/,
+                message: 'Please enter a valid phone number!',
+              },
+            ]}
+          >
+            <Input
+              placeholder="Enter Phone Number"
+              className="h-[42px] px-4  border-gray-300 rounded-md"
             />
           </Form.Item>
 
           <Form.Item
             name="password"
-            label={<span className="text-white">Password</span>}
+            label={<span className="">Password</span>}
             rules={[{ required: true, message: 'Please enter your password!' }]}
           >
             <Input.Password
               placeholder="Enter password"
               className="custom-password-input h-[42px] px-4 border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-                caretColor: 'white',
-              }}
               iconRender={(visible) =>
-                visible ? (
-                  <EyeOutlined style={{ color: 'white' }} />
-                ) : (
-                  <EyeInvisibleOutlined style={{ color: 'white' }} />
-                )
+                visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
               }
             />
           </Form.Item>
 
           <Form.Item
             name="confirm"
-            label={<span className="text-white">Confirm Password</span>}
+            label={<span className="">Confirm Password</span>}
             dependencies={['password']}
             rules={[
               {
@@ -181,105 +140,11 @@ const SignUp = () => {
             <Input.Password
               placeholder="Enter confirm password"
               className="custom-password-input h-[42px] px-4 border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-                caretColor: 'white',
-              }}
               iconRender={(visible) =>
-                visible ? (
-                  <EyeOutlined style={{ color: 'white' }} />
-                ) : (
-                  <EyeInvisibleOutlined style={{ color: 'white' }} />
-                )
+                visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
               }
             />
           </Form.Item>
-
-          <Form.Item
-            name="phone"
-            label={<span className="text-white">Phone Number</span>}
-            rules={[
-              {
-                required: true,
-                message: 'Please input your phone number!',
-              },
-              {
-                pattern: /^[0-9]+$/,
-                message: 'Please enter a valid phone number!',
-              },
-            ]}
-          >
-            <Input
-              placeholder="Enter Phone Number"
-              className="h-[42px] px-4 bg-black border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-              }}
-            />
-          </Form.Item>
-
-          {accountType === 'professional' && (
-            <>
-              <Form.Item
-                name="serviceCategories"
-                label={
-                  <span className="text-white bg-black">
-                    Service Categories
-                  </span>
-                }
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please select at least one service category!',
-                  },
-                ]}
-              >
-                <Select
-                  mode="multiple"
-                  allowClear
-                  placeholder="Select service categories"
-                  className="custom-select h-[42px] px-4"
-                  options={[
-                    { label: 'Plumbing', value: 'plumbing' },
-                    { label: 'Electrical', value: 'electrical' },
-                    { label: 'HVAC', value: 'hvac' },
-                    { label: 'Carpentry', value: 'carpentry' },
-                    { label: 'Painting', value: 'painting' },
-                    { label: 'Flooring', value: 'flooring' },
-                    { label: 'Roofing', value: 'roofing' },
-                    { label: 'Landscaping', value: 'landscaping' },
-                    { label: 'Cleaning', value: 'cleaning' },
-                    { label: 'Other', value: 'other' },
-                  ]}
-                />
-              </Form.Item>
-
-              <Form.Item
-                name="experience"
-                label={
-                  <span className="text-white">Experience/Qualifications</span>
-                }
-                rules={[
-                  {
-                    required: true,
-                    message:
-                      'Please provide your experience or qualifications!',
-                  },
-                ]}
-              >
-                <Input
-                  placeholder="Enter your experience/qualifications"
-                  className="h-[42px] px-4 bg-black border-gray-300 rounded-md"
-                  style={{
-                    backgroundColor: 'black',
-                    color: 'white',
-                  }}
-                />
-              </Form.Item>
-            </>
-          )}
 
           <Form.Item>
             <Button
@@ -296,11 +161,11 @@ const SignUp = () => {
             </Button>
           </Form.Item>
         </Form>
-        <div className="text-gray-200 mt-11 text-xs">
+        <div className=" mt-11 text-xs">
           Have an account?{' '}
           <Link
             to={`/login`}
-            className="text-gray-200 underline"
+            className=" underline"
             style={{ textDecoration: 'underline' }}
           >
             Login
