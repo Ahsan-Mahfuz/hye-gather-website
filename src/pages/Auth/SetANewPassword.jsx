@@ -1,30 +1,39 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import rightSideImage from '../../assets/passwordPicture.png'
+import rightSideImage from '../../assets/forgetPassword.png'
+
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 
-const ChangePassword = () => {
+const SetANewPassword = () => {
   const navigate = useNavigate()
   const onFinish = (values) => {
     console.log('Received values of form: ', values)
-    navigate('/login')
+    navigate('/sign-in')
   }
 
   return (
-    <div className="h-screen flex text-white flex-col lg:flex-row">
-      <div className="w-full lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12 bg-black">
+    <div className="h-screen flex  flex-col lg:flex-row ">
+      <div className="w-1/2 hidden lg:block">
+        <img
+          src={rightSideImage}
+          alt="password-reset"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="w-full lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12">
         <h1
-          className="text-[50px] font-bold mb-2 whitespace-nowrap"
+          className="text-[50px] font-bold mb-2 text-center"
           style={{ fontSize: 'clamp(20px, 10vw, 50px)' }}
         >
           Set new Password
         </h1>
         <p
-          className="text-lg mb-8 whitespace-nowrap"
+          className="text-lg mb-8 text-center"
           style={{ fontSize: 'clamp(12px, 5vw, 20px)' }}
         >
-          Must be at least 8 character
+          Create a new password. Ensure it differs from previous ones for
+          security
         </p>
 
         <Form
@@ -35,30 +44,21 @@ const ChangePassword = () => {
         >
           <Form.Item
             name="password"
-            label={<span className="text-white">Password</span>}
+            label={<span className="">Password</span>}
             rules={[{ required: true, message: 'Please enter your password!' }]}
           >
             <Input.Password
               placeholder="Enter password"
               className="custom-password-input h-[42px] px-4 border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-                caretColor: 'white',
-              }}
               iconRender={(visible) =>
-                visible ? (
-                  <EyeOutlined style={{ color: 'white' }} />
-                ) : (
-                  <EyeInvisibleOutlined style={{ color: 'white' }} />
-                )
+                visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
               }
             />
           </Form.Item>
 
           <Form.Item
             name="confirm"
-            label={<span className="text-white">Confirm Password</span>}
+            label={<span className="">Confirm Password</span>}
             dependencies={['password']}
             rules={[
               {
@@ -82,17 +82,8 @@ const ChangePassword = () => {
             <Input.Password
               placeholder="Enter confirm password"
               className="custom-password-input h-[42px] px-4 border-gray-300 rounded-md"
-              style={{
-                backgroundColor: 'black',
-                color: 'white',
-                caretColor: 'white',
-              }}
               iconRender={(visible) =>
-                visible ? (
-                  <EyeOutlined style={{ color: 'white' }} />
-                ) : (
-                  <EyeInvisibleOutlined style={{ color: 'white' }} />
-                )
+                visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
               }
             />
           </Form.Item>
@@ -102,8 +93,6 @@ const ChangePassword = () => {
               type="primary"
               htmlType="submit"
               style={{
-                backgroundColor: '#0D9276',
-                color: 'white',
                 padding: '1.25rem',
               }}
               className="w-full rounded-full h-11 mt-10"
@@ -113,16 +102,8 @@ const ChangePassword = () => {
           </Form.Item>
         </Form>
       </div>
-
-      <div className="w-1/2 hidden lg:block">
-        <img
-          src={rightSideImage}
-          alt="password-reset"
-          className="w-full h-full object-cover"
-        />
-      </div>
     </div>
   )
 }
 
-export default ChangePassword
+export default SetANewPassword

@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
-import Home from '../pages/home/Home'
+import Home from '../pages/home/withoutLoginHome/Home'
 
 import Layout from '../pages/components/Layout'
 import AdminRoute from '../pages/ProtectedRoute/AdminRoute'
@@ -10,6 +10,14 @@ import TermsAndCondition from '../pages/termsAndCondition/TermsAndCondition'
 import PrivacyAndPolicy from '../pages/privacyAndPolicy/PrivacyAndPolicy'
 import ContactUs from '../pages/contact/ContactUs'
 import SignUp from '../pages/Auth/SignUp'
+import SignIn from '../pages/Auth/SignIn'
+import ForgetPassword from '../pages/Auth/ForgetPassword'
+import OtpSent from '../pages/Auth/OtpSent'
+import SetANewPassword from '../pages/Auth/SetANewPassword'
+import RoleSelection from '../pages/Auth/ChooseRole'
+import Subscription from '../pages/Auth/Subscription'
+import Payment from '../pages/Auth/Payment'
+import UserHome from '../pages/home/userLoginHome/UserHome'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +29,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/event-data',
+    path: '/explore-vendors',
     element: (
       <Layout>
         <AdminRoute>
@@ -62,8 +70,79 @@ const router = createBrowserRouter([
   },
   {
     path: '/sign-up',
-    element: <SignUp />,
+    element: (
+      <Layout>
+        <SignUp />
+      </Layout>
+    ),
   },
+  {
+    path: '/sign-in',
+    element: (
+      <Layout>
+        <SignIn />
+      </Layout>
+    ),
+  },
+  {
+    path: '/forget-password',
+    element: (
+      <Layout>
+        <ForgetPassword />
+      </Layout>
+    ),
+  },
+  {
+    path: '/otp-sent',
+    element: (
+      <Layout>
+        <OtpSent />
+      </Layout>
+    ),
+  },
+  {
+    path: '/set-new-password',
+    element: (
+      <Layout>
+        <SetANewPassword />
+      </Layout>
+    ),
+  },
+  {
+    path: '/role-selection',
+    element: (
+      <Layout>
+        <RoleSelection />
+      </Layout>
+    ),
+  },
+  {
+    path: '/subscription',
+    element: (
+      <Layout>
+        <Subscription />
+      </Layout>
+    ),
+  },
+  {
+    path: '/payment',
+    element: (
+      <Layout>
+        <Payment />
+      </Layout>
+    ),
+  },
+
+  // user login page start
+  {
+    path: '/user/home',
+    element: (
+      <Layout>
+        <UserHome />
+      </Layout>
+    ),
+  },
+
   // {
   //   path: '/login',
   //   element: <LoginPage />,

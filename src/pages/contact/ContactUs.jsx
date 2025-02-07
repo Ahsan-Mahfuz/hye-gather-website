@@ -23,7 +23,7 @@ const ContactUs = () => {
         <img src={contactUs} alt="contact" className="w-[600px] min-w-[400px]" />
       </section>
       <section>
-        <div className="min-w-[300px]   mx-auto bg-white p-10 rounded-lg shadow-md">
+        <div className="min-w-[300px]   mx-auto bg-gray-100 p-10 rounded-lg shadow-md">
           <h2 className="text-3xl font-bold text-center mb-2 max-lg:text-2xl">
             Ask a question
           </h2>

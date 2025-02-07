@@ -1,7 +1,7 @@
 import React from 'react'
-import event from '../../assets/event.svg'
-import cross from '../../assets/cross.svg'
-import image1 from '../../assets/Decorations.jpg'
+import event from '../../../assets/event.svg'
+import cross from '../../../assets/cross.svg'
+import image1 from '../../../assets/Decorations.jpg'
 import { Link } from 'react-router-dom'
 
 const CustomizeEvent = () => {

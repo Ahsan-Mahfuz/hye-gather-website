@@ -1,11 +1,11 @@
 import React from 'react'
-import musician from '../../assets/Frame-1.png'
-import entertainers from '../../assets/Frame-2.png'
-import eventPlanner from '../../assets/Frame-3.png'
-import decorators from '../../assets/Frame-4.png'
-import caterers from '../../assets/Frame-5.png'
-import photographers from '../../assets/Frame-6.png'
-import djs from '../../assets/Frame.png'
+import musician from '../../../assets/Frame-1.png'
+import entertainers from '../../../assets/Frame-2.png'
+import eventPlanner from '../../../assets/Frame-3.png'
+import decorators from '../../../assets/Frame-4.png'
+import caterers from '../../../assets/Frame-5.png'
+import photographers from '../../../assets/Frame-6.png'
+import djs from '../../../assets/Frame.png'
 import { Link } from 'react-router-dom'
 
 const categories = [

@@ -1,24 +1,30 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
-import signUp from '../../assets/signUp.png'
+import login from '../../assets/logIn.png'
 
 const SignUp = () => {
+  const location = useLocation()
+  const { role } = location.state
   const navigate = useNavigate()
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values)
-    navigate('/login')
+    if (role === 'customer') {
+      navigate('/sign-in')
+    } else if (role === 'vendor') {
+      navigate('/subscription')
+    }
   }
 
   return (
-    <div className="fixed inset-0 h-screen flex  flex-col lg:flex-row">
+    <div className="h-screen flex  flex-col lg:flex-row">
       <div className="w-1/2 hidden lg:block">
-        <img src={signUp} alt="Login" className="w-full h-full object-cover" />
+        <img src={login} alt="Login" className="w-full h-full object-cover" />
       </div>
-      <div className="bg-white mx-auto lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12 ">
-        <div className='flex items-center flex-col max-w-[500px] w-full'>
+      <div className=" mx-auto lg:w-1/2 h-screen  flex flex-col justify-center items-center p-12 ">
+        <div className="flex items-center flex-col max-w-[500px] w-full">
           <h1
             className="font-bold mb-2 text-center"
             style={{ fontSize: 'clamp(20px, 8vw, 40px)' }}
@@ -151,24 +157,18 @@ const SignUp = () => {
               type="primary"
               htmlType="submit"
               style={{
-                backgroundColor: '#0D9276',
-                color: 'white',
                 padding: '1.25rem',
               }}
-              className="w-full rounded-full h-11 mt-10"
+              className="w-full   rounded-full h-11 mt-5"
             >
               Sign Up
             </Button>
           </Form.Item>
         </Form>
-        <div className=" mt-11 text-xs">
-          Have an account?{' '}
-          <Link
-            to={`/login`}
-            className=" underline"
-            style={{ textDecoration: 'underline' }}
-          >
-            Login
+        <div className="  text-xs">
+          Already have an account?{' '}
+          <Link to={`/sign-in`} className=" hover:underline text-blue-800">
+            Sign In
           </Link>
         </div>
       </div>

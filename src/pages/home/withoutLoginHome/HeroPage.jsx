@@ -1,8 +1,8 @@
 import React from 'react'
-import bestVendor from '../../assets/bestVendor.svg'
+import bestVendor from '../../../assets/bestVendor.svg'
 import { CiCircleChevRight } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
-import heroPageRightPicture from '../../assets/heroPageRightPicture.png'
+import heroPageRightPicture from '../../../assets/heroPageRightPicture.png'
 
 const HeroPage = () => {
   return (
