@@ -8,10 +8,11 @@ body {
   font-family: "Poppins", serif;
   width: 100%;
   background-color: #D9D9D9;
+  /* padding: 20px; */
 }
 
 .responsive-width {
-  max-width: 1920px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
 }

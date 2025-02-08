@@ -7,7 +7,7 @@ import photography from '../../../assets/Photography.jpg'
 
 const UserHeroPage = () => {
   return (
-    <div className="responsive-width flex flex-col xl:flex-row gap-10 items-center justify-between min-h-screen  px-6 md:px-16 py-12">
+    <div className="responsive-width flex flex-col xl:flex-row gap-10 items-center justify-between h-screen  ">
       {/* Left Side - Text & Search */}
       <div className="max-w-xl">
         <h1 className="text-3xl font-bold text-gray-900">

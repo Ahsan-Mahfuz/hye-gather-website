@@ -58,6 +58,14 @@ const PopularVendorsCategory = () => {
       {
         breakpoint: 10000,
         settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1500,
+        settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
@@ -72,7 +80,7 @@ const PopularVendorsCategory = () => {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 800,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -81,25 +89,25 @@ const PopularVendorsCategory = () => {
     ],
   }
   return (
-    <div className="mt-20">
-      <section className="flex items-center justify-center flex-col">
-        <h1 className="font-bold text-4xl">Popular Vendor Category</h1>
-      </section>
-      <div className="py-10 mb-10">
-        <div className="container mx-auto">
+    <div className=" responsive-width pt-80 pb-80 max-md:pb-40 flex flex-col justify-center ">
+      <h1 className="font-bold text-3xl">Popular Vendor Category</h1>
+      <div className=" mb-10 ">
+        <div className=" mx-auto">
           <div data-aos="zoom-in">
             <Slider {...settings}>
               {TestimonialData.map((data) => (
-                <div className="my-6" key={data.id}>
-                  <div className="flex flex-col gap-4 py-8 px-6 mx-4 rounded-xl  relative">
+                <div className="" key={data.id}>
+                  <div className="flex flex-col gap-4 py-8 px-2  rounded-xl  relative">
                     <div className="mb-4 flex items-center justify-center">
                       <img
                         src={data.img}
                         alt={data.name}
-                        className="w-[400px] h-[300px] object-cover"
+                        className=" w-[500px] h-[250px] object-center object-cover"
                       />
                     </div>
-                    <h2 className="text-center text-2xl font-semibold">{data.name}</h2>
+                    <h2 className="text-center text-2xl font-semibold">
+                      {data.name}
+                    </h2>
                   </div>
                 </div>
               ))}

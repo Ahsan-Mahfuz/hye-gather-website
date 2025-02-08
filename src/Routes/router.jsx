@@ -24,7 +24,8 @@ import Transactions from '../pages/transactions/Transactions'
 import ProfileSettings from '../pages/profile/ProfileSettings'
 import Profile from '../pages/profile/Profile'
 import AccountSettings from '../accountSettings/AccountSettings'
-import Card from '../pages/card/Cards'
+import Testimonial from '../pages/home/withoutLoginHome/Testimonial'
+import UserVendor from '../pages/userVendor/UserVendor'
 
 const router = createBrowserRouter([
   {
@@ -198,11 +199,28 @@ const router = createBrowserRouter([
       </Layout>
     ),
   },
+  // {
+  //   path: '/user/card',
+  //   element: (
+  //     <Layout>
+  //       <Card />
+  //     </Layout>
+  //   ),
+  // },
+
   {
-    path: '/user/card',
+    path: '/user/testimonial',
     element: (
       <Layout>
-        <Card />
+        <Testimonial />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/vendors',
+    element: (
+      <Layout>
+        <UserVendor />
       </Layout>
     ),
   },

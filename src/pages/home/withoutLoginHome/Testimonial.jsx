@@ -69,22 +69,22 @@ const Testimonial = () => {
     ],
   }
   return (
-    <div className="  mt-20">
+    <div className=" responsive-width pt-[200px]">
       <section className="flex items-center justify-center flex-col">
-        <h1 className="font-bold text-4xl">What Our Clients Say</h1>
-        <p className="text-gray-500 mt-3">
+        <h1 className="font-bold text-3xl">What Our Clients Say</h1>
+        <p className="text-gray-500 mt-3 text-center">
           Real experiences from event organizers who found the perfect vendors
           through our platform. Discover how we’ve made event planning seamless,
           stress-free, and successful.
         </p>
       </section>
       <div className="py-10 mb-10 ">
-        <div className="container mx-auto">
+        <div className=" mx-auto">
           <div data-aos="zoom-in">
             <Slider {...settings}>
               {TestimonialData.map((data) => (
                 <div className="my-6" key={data.id}>
-                  <div className="flex flex-col gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl  bg-white relative">
+                  <div className="flex flex-col items-center justify-center gap-4 shadow-lg py-8 px-6 mx-4 rounded-xl h-[420px] bg-white relative">
                     <div className="mb-4 flex items-center justify-center">
                       <img
                         src={data.img}
