@@ -16,8 +16,15 @@ import OtpSent from '../pages/Auth/OtpSent'
 import SetANewPassword from '../pages/Auth/SetANewPassword'
 import RoleSelection from '../pages/Auth/ChooseRole'
 import Subscription from '../pages/Auth/Subscription'
-import Payment from '../pages/Auth/Payment'
 import UserHome from '../pages/home/userLoginHome/UserHome'
+import ChatApp from '../pages/chat/ChatApp'
+import PageNotFround from '../pages/pageNotFround/PageNotFround'
+import Notifications from '../pages/notifications/Notifications'
+import Transactions from '../pages/transactions/Transactions'
+import ProfileSettings from '../pages/profile/ProfileSettings'
+import Profile from '../pages/profile/Profile'
+import AccountSettings from '../accountSettings/AccountSettings'
+import Card from '../pages/card/Cards'
 
 const router = createBrowserRouter([
   {
@@ -124,14 +131,6 @@ const router = createBrowserRouter([
       </Layout>
     ),
   },
-  {
-    path: '/payment',
-    element: (
-      <Layout>
-        <Payment />
-      </Layout>
-    ),
-  },
 
   // user login page start
   {
@@ -139,6 +138,71 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <UserHome />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/chat',
+    element: (
+      <Layout>
+        <ChatApp />
+      </Layout>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <Layout>
+        <PageNotFround />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/notifications',
+    element: (
+      <Layout>
+        <Notifications />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/transactions',
+    element: (
+      <Layout>
+        <Transactions />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/profile',
+    element: (
+      <Layout>
+        <ProfileSettings />
+      </Layout>
+    ),
+  },
+
+  {
+    path: '/user/edit-profile',
+    element: (
+      <Layout>
+        <Profile />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/profile/account-settings',
+    element: (
+      <Layout>
+        <AccountSettings />
+      </Layout>
+    ),
+  },
+  {
+    path: '/user/card',
+    element: (
+      <Layout>
+        <Card />
       </Layout>
     ),
   },

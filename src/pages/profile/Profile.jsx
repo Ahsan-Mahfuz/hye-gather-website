@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Password from './Password'
 import { Button, Form, Input, message, Upload } from 'antd'
 import { UploadOutlined, LoadingOutlined } from '@ant-design/icons'
-import profileImage from '../../assets/profile.png'
+import profileImage from '../../assets/Photography.jpg'
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('profile')
   const [form] = Form.useForm()
@@ -38,35 +38,7 @@ const Profile = () => {
     }
   }
 
-  const handleFileUpload = async (info) => {
-    setLoading(true)
-
-    const uploadedFile = info.file.originFileObj || info.file
-
-    if (!(uploadedFile instanceof File)) {
-      message.error('Invalid file type. Please upload a valid PDF.')
-      setLoading(false)
-      return
-    }
-
-    setTimeout(() => {
-      setLoading(false)
-
-      try {
-        const fileURL = URL.createObjectURL(uploadedFile)
-
-        setFormData({
-          ...formData,
-          pdf: { name: uploadedFile.name, file: uploadedFile, url: fileURL },
-        })
-
-        message.success(`${uploadedFile.name} uploaded successfully`)
-      } catch (error) {
-        console.error('Error creating object URL:', error)
-        message.error('Error displaying uploaded file.')
-      }
-    }, 2000)
-  }
+ 
   const handleImageUpload = async (info) => {
     setImageLoading(true)
 
@@ -100,11 +72,12 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
+        <div className='text-3xl font-bold text-center m-5 mb-7'>Update Your Profile</div>
         <div className="flex flex-col items-center">
           <img
             src={formData.image ? formData.image : profileImage}
             alt="Profile"
-            className="w-24 h-24 rounded-full border object-cover"
+            className="w-28 h-28 rounded-full border object-cover"
           />
 
           {isEditing && (
@@ -156,87 +129,15 @@ const Profile = () => {
             <div className="rounded-lg  w-full max-w-3xl">
               <Form form={form} layout="vertical" initialValues={formData}>
                 <div className="flex flex-col gap-1">
-                  <Form.Item label="Full Name" name="fullName">
-                    <Input disabled={!isEditing} className="h-[40px]" />
-                  </Form.Item>
-                  <Form.Item label="Phone Number" name="phone">
+                  <Form.Item label="Name" name="fullName">
                     <Input disabled={!isEditing} className="h-[40px]" />
                   </Form.Item>
                   <Form.Item label="Email" name="email">
                     <Input disabled={!isEditing} className="h-[40px]" />
                   </Form.Item>
-                  <Form.Item label="Area" name="area">
+                  <Form.Item label="Contact Number" name="phone">
                     <Input disabled={!isEditing} className="h-[40px]" />
                   </Form.Item>
-                  <Form.Item label="Building" name="building">
-                    <Input disabled={!isEditing} className="h-[40px]" />
-                  </Form.Item>
-                  <Form.Item label="Postal Code" name="postalCode">
-                    <Input disabled={!isEditing} className="h-[40px]" />
-                  </Form.Item>
-                  <Form.Item
-                    label="Street Address"
-                    name="streetAddress"
-                    className="col-span-2"
-                  >
-                    <Input disabled={!isEditing} />
-                  </Form.Item>
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-lg font-semibold mb-2">Documents</h3>
-                  <div className="flex flex-col rounded-md">
-                    <span className="mb-2 font-medium">Identity Document</span>
-
-                    {formData.pdf ? (
-                      <div className="flex flex-col">
-                        <span className="mb-2 font-medium">
-                          📄 {formData.pdf.name}
-                        </span>
-                        <a
-                          href={formData.pdf.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 underline"
-                        >
-                          View Document
-                        </a>
-                        <Button
-                          type="default"
-                          danger
-                          className="mt-2"
-                          onClick={() =>
-                            setFormData({ ...formData, pdf: null })
-                          }
-                        >
-                          Remove Document
-                        </Button>
-                      </div>
-                    ) : (
-                      <Upload
-                        accept=".pdf"
-                        showUploadList={false}
-                        beforeUpload={() => false}
-                        onChange={handleFileUpload}
-                        disabled={!isEditing || loading}
-                        className={
-                          !isEditing ? 'opacity-40 ' : 'cursor-pointer'
-                        }
-                      >
-                        <Button
-                          icon={
-                            loading ? (
-                              <LoadingOutlined spin />
-                            ) : (
-                              <UploadOutlined />
-                            )
-                          }
-                        >
-                          {loading ? 'Uploading...' : 'Upload PDF'}
-                        </Button>
-                      </Upload>
-                    )}
-                  </div>
                 </div>
 
                 <div className="flex justify-center mt-6">
